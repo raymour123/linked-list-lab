@@ -24,13 +24,39 @@ public class Driver {
 		
 		//Determine which data structure is fastest for each
 		//operation. Complete the action
+
+		for (int i = 0; i < studentArrayList.size(); i++) {
+			if (studentArrayList.get(i).getLastName().equals("Smith")) {
+				studentArrayList.remove(i);
+				break;
+			}
+		}
+
+		for (int i = 0; i < studentLinkedList.getSize(); i++) {
+			if (studentArrayList.get(i).getLastName().equals("Smith")) {
+				studentArrayList.remove(i);
+				break;
+			}
+		}
 		
 		//Delete the first, if any, Student with the last name of "Smith"
 		
 		//Change the name of the 3rd entry to "Joe Montana"
-		
+
+		studentArrayList.get(2).setFirstName("Joe");
+		studentArrayList.get(2).setLastName("Montana");
+
+		studentLinkedList.get(2).setFirstName("Joe");
+		studentLinkedList.get(2).setLastName("Montana");
+
 		//Remove the 10th element
+
+		studentArrayList.remove(9);
+
+		studentLinkedList.remove(9);
+
 	}
+
 	
 	//To generate the ArrayList
 	private static void generateStudents(int numberOfStudents, List<Student> outList) {

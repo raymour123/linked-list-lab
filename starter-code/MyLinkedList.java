@@ -13,17 +13,53 @@ public class MyLinkedList<T> implements Iterable<T>{
 
 	public boolean remove(int index) {
 		//to-do
+		if (index >= size) {
+			throw new IndexOutOfBoundsException();
+		} else if (index == 0) {
+			head = head.getNext();
+		} else {
+			Node<T> previousNode = head;
+			Node<T> currentNode = head;
+			for (int i = 0; i < index; i++) {
+				previousNode = currentNode;
+				currentNode = currentNode.getNext();
+			}
+			if (currentNode.getNext() == null) {
+				previousNode.setNext(null);
+			} else {
+				previousNode.setNext(currentNode.getNext());
+			}
+		}
 		size--;
 		return true;
 	}
 
 	public T get(int index) {
-		//to-do
-		return currentNode.getData();
+		if (index >= size) {
+			throw new IndexOutOfBoundsException();
+		} else {
+			Node<T> currentNode = head;
+			while (currentNode.getNext() != null) {
+				currentNode = currentNode.getNext();
+			}
+			return currentNode.getData();
+		}
+	}
 	}
 
 	public void add(T obj) {
-		//to-do
+		if (size == 0) {
+			head = new Node<T>(obj, null);
+		} else {
+			Node<T> currentNode = head;
+			for (int i = 0; i < size; i++) {
+				if (currentNode.getNext() != null) {
+					currentNode = currentNode.getNext();
+				} else {
+					currentNode.setNext(new Node<T>(obj, null));
+				}
+			}
+		}
 		size++;
 	}
 
